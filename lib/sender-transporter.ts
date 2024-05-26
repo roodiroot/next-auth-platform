@@ -1,7 +1,7 @@
 import * as nodemailer from "nodemailer";
 
 export const transporter = nodemailer.createTransport({
-  host: process.env.EMAIL_HOST || "localhost",
+  host: process.env.EMAIL_HOST,
   port: process.env.EMAIL_PORT || 465,
   secure: true,
   auth: {
@@ -11,4 +11,4 @@ export const transporter = nodemailer.createTransport({
   tls: {
     rejectUnauthorized: false,
   },
-});
+} as nodemailer.TransportOptions);
