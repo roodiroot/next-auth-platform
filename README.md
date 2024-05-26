@@ -1,36 +1,128 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Шаблон авторизации на Next.js
 
-## Getting Started
+Этот репозиторий предоставляет комплексный шаблон авторизации для приложений на Next.js. Он включает в себя функции регистрации пользователей, входа в систему и защищенных маршрутов, что упрощает интеграцию авторизации в ваши проекты на Next.js.
 
-First, run the development server:
+## Возможности
+
+- **Регистрация пользователей**: Новые пользователи могут зарегистрироваться с помощью электронной почты и пароля.
+- **Вход пользователей**: Зарегистрированные пользователи могут войти в систему с использованием своих учетных данных.
+- **Защищенные маршруты**: Страницы, доступные только аутентифицированным пользователям.
+- **Управление сессиями**: Управление сессиями пользователей с использованием куки.
+- **API маршруты**: Защищенные API маршруты для операций аутентификации.
+- **Клиентская аутентификация**: Контекст и хуки React для управления состоянием аутентификации на клиентской стороне.
+
+## Начало работы
+
+### Предварительные требования
+
+Перед началом убедитесь, что у вас установлены следующие программы:
+
+- Node.js (v14 или выше)
+- npm (v6 или выше) или yarn
+
+### Установка
+
+1. Клонируйте репозиторий:
+
+   ```bash
+   git clone https://github.com/roodiroot/next-auth-platform.git
+   cd next-auth-platform
+   ```
+
+2. Установите зависимости:
+
+   ```bash
+   npm install
+   # или
+   yarn install
+   ```
+
+### Конфигурация
+
+1. Создайте файл `.env` в корневой директории и добавьте следующие переменные окружения:
+
+   ```env
+    BASE_URL="http://localhost:3000"
+
+    #Подключение к БД prisma
+    DATABASE_URL="postgresql://postgres:12121212@localhost:5432/auth_db?schema=public"
+
+    #Данные для авторизации
+    AUTH_COOKIE_NAME="auth_cookie"
+    AUTH_SECRET="sdsdfg45y6356y5hetr67ye56ghsd"
+    GITHUB_CLIENT_ID=ff543fgertgsdfgbf
+    GITHUB_CLIENT_SECRET=d54sdfewt4werfgw45t55c52c1989b
+
+    YANDEX_CLIENT_SECRET=e88sdafadsfasf4356rtgsy8aef287b
+    YANDEX_CLIENT_ID=1c1bb7sdfg45634gw56345gw456db302
+
+    VK_CLIENT_SECRET=
+    VK_CLIENT_ID=
+
+    #Данные хоста электронной почты, для отправки сообщений на почту
+    EMAIL_HOST="smtp.ya.com"
+    EMAIL_PORT=465
+    EMAIL_HOST_USER="sender@ya.ru"
+    EMAIL_HOST_PASSWORD="mAdsfggG567"
+   ```
+
+2. Обновите переменные, указав собственные данные.
+3. Инициализируйте БД.
+
+### Запуск приложения
+
+Чтобы запустить сервер разработки:
 
 ```bash
 npm run dev
-# or
+# или
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Откройте [http://localhost:3000](http://localhost:3000) в вашем браузере для просмотра приложения.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Структура директорий
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```
+.
+├── components
+│   ├── AuthProvider.js
+│   ├── LoginForm.js
+│   ├── RegisterForm.js
+├── pages
+│   ├── api
+│   │   ├── auth
+│   │   │   ├── login.js
+│   │   │   ├── register.js
+│   ├── _app.js
+│   ├── index.js
+│   ├── login.js
+│   ├── register.js
+│   ├── protected.js
+├── utils
+│   ├── auth.js
+│   ├── jwt.js
+├── .env.local.example
+├── README.md
+├── package.json
+```
 
-## Learn More
+### Настройка
 
-To learn more about Next.js, take a look at the following resources:
+Вы можете настроить компоненты и стили в соответствии с вашими потребностями. Шаблон использует Tailwind CSS для стилизации, но вы можете заменить его на любой другой CSS-фреймворк или собственные стили.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Вклад в проект
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Приветствуется любой вклад в проект! Пожалуйста, форкните репозиторий и отправьте pull request с вашими изменениями. Убедитесь, что ваш код соответствует стандартам кодирования проекта и включает соответствующие тесты.
 
-## Deploy on Vercel
+### Лицензия
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Этот проект лицензирован под лицензией MIT. Подробности смотрите в файле [LICENSE](LICENSE).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+---
+
+Этот шаблон предназначен для предоставления надежной основы для построения систем авторизации в приложениях на Next.js с Next-auth v 5.0.0-beta.5. Приятного кодирования!
+
+## Контакты
+
+Если у вас есть вопросы или отзывы, не стесняйтесь обращаться по адресу [borisov130490@gmail.com](mailto:borisov130490@gmail.com).
